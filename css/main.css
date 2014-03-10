@@ -51,9 +51,12 @@ header
 .container > section p.text {
 	font-size: 1.4em;
 }
-
+canvas { 
+text-align: center;
+}
 .hidden{
-  visibility: hidden;
+visibility: hidden;
+
 }
 
 .color-1 {
@@ -177,7 +180,7 @@ footer {
     margin: 25px 25px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: 700;
+    font-weight: 7000;
     outline: none;
     position: relative;
     -webkit-transition: all 0.3s;

@@ -7,17 +7,65 @@
 
 <link href="css/main.css" rel="stylesheet" />
 
-<script src="js/radio.js"></script>  
+<script src="js/radio.js"></script>
+<script src="js/sonic.js"></script>
 </head>
 
 <body>
 
   <header >Это твой формат :) Город FM</header>
 <div class="container">
- 
   <section class="color-1">
+
     <p>
-    	<img src="http://mychern.ru/doc/loading.gif" id="loader" class="hidden"/>
+    	<div class="hidden" id="loader"><div id="loader"></div></div><br>
+      <script>
+var loaders = [
+  {
+
+    width: 70, //canvas размеры
+    height: 70, // 
+
+    stepsPerFrame: 2, // скорость
+    trailLength: 1, // 
+    pointDistance: .01, // 
+    fps: 60, // яснопонятно
+
+    fillColor: '#27ae60', //цвет
+
+    step: function(point, index) {
+      
+      this._.beginPath();
+      this._.moveTo(point.x, point.y);
+      this._.arc(point.x, point.y, index * 3, 0, Math.PI*4, false); // круги
+      this._.closePath();
+      this._.fill();
+
+    },
+
+    path: [
+      ['arc', 40, 40, 25, 0, 360] //размерыградусы
+    ]
+
+  },
+
+];
+
+var d, a, container = document.getElementById('loader'); //id
+
+for (var i = -1, l = loaders.length; ++i < l;) {
+  
+  d = document.createElement('div');
+  a = new Sonic(loaders[i]);
+  d.appendChild(a.canvas);
+  container.appendChild(d);
+
+// a.canvas.style.marginTop = (40 - a.fullHeight) / 2 + 'px'; //margin
+ // a.canvas.style.marginLeft = (1 - a.fullWidth) / 2 + 'px';
+
+  a.play();
+}
+</script>
       <button class="btn" id="playpause">Воспроизвести</button><br>
       <span class="time" id="duration">0:0</span><br>
       <input id="volume" type="range" min="0" max="100" value="80" />
@@ -26,8 +74,9 @@
 </div>
 
 <footer>2014
-  <a href="http://vk.co/timon270395/"><span class="autor">Садовых Тимафей</span></a>
+  <a href="http://vk.com/timon270395"><span class="autor">Садовых Тимафей</span></a>
 
 </footer>
+
 </body>
 </html>
